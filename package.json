@@ -1,27 +1,16 @@
 {
-  "name": "gatsby-bulma-quickstart",
-  "description": "A Project to bootstrap your next Gatsby + Bulma site.",
-  "version": "1.8.0",
-  "author": "Aman Mittal <amandeepmittal@live.com>",
+  "name": "msp-bus-tracker",
+  "description": "Minneapolis Bus Tracker",
+  "version": "0.0.0",
+  "author": "Trevor Litsey <trevorlitsey@gmail.com>",
   "dependencies": {
     "bulma": "^0.8.0",
     "gatsby": "^2.16.5",
-    "gatsby-image": "^2.2.29",
     "gatsby-plugin-create-client-paths": "^2.1.17",
-    "gatsby-plugin-google-analytics": "^2.1.23",
-    "gatsby-plugin-manifest": "^2.2.23",
-    "gatsby-plugin-offline": "^3.0.16",
-    "gatsby-plugin-react-helmet": "^3.1.13",
     "gatsby-plugin-sass": "^2.1.20",
-    "gatsby-plugin-sharp": "^2.2.32",
-    "gatsby-plugin-sitemap": "^2.2.19",
-    "gatsby-source-filesystem": "^2.1.33",
-    "gatsby-transformer-sharp": "^2.2.23",
     "node-sass": "^4.12.0",
     "react": "^16.10.2",
-    "react-dom": "^16.10.2",
-    "react-helmet": "^5.2.1",
-    "react-icons": "^3.7.0"
+    "react-dom": "^16.10.2"
   },
   "keywords": [
     "gatsby",
@@ -35,14 +24,9 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "start": "npm run develop",
-    "format": "prettier --write \"src/**/*.js\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "format": "prettier --write \"src/**/*.js\""
   },
   "devDependencies": {
     "prettier": "^1.14.2"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/amandeepmittal/gatsby-bulma-quickstart"
   }
 }
