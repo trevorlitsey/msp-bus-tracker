@@ -1,10 +1,13 @@
-import { FetchError } from './errors';
-import { logger } from './logger';
+import { FetchError } from "./errors";
+import { logger } from "./logger";
 
-export const fetchJSON = (requestURL, method = 'GET', body) => {
+export const fetchJSON = (requestURL, method = "GET", body) => {
   const options = {
     method,
-    headers: {},
+    headers: {
+      // "Content-Type": "application/json",
+      // Accept: "application/json"
+    }
   };
 
   if (body) {

@@ -1,29 +1,9 @@
-// Importing variables
-@import './variables.scss';
+@import "~bulma/bulma.sass";
 
-// Importing Bulma from node_modules
-@import '~bulma/bulma.sass';
-
-.gradientBg {
-	display: flex;
-	background: linear-gradient(to right, $primary-color, $secondary-color);
+.app-container {
+  margin: 22px;
 }
 
-.center {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.footer {
-	display: flex;
-	padding: 1.5rem 1.5rem;
-	line-height: 1.5rem;
-	a {
-		border-bottom: 1px solid;
-		color: black;
-	}
-	a:hover {
-		color: $secondary-color;
-	}
+.select {
+  margin-bottom: 18px;
 }

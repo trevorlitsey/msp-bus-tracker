@@ -1,34 +1,30 @@
-import React, { Component } from 'react';
-import RoutesSelect from './RoutesSelect';
-import { fetchRoutes } from '../services';
+import React, { Component } from "react";
+import RouteSelect from "./route-select";
+import DirectionSelect from "./direction-select";
+import StopSelect from "./stop-select";
+import DeparturesList from "./departures-list";
+import "./style.scss";
 
 class App extends Component {
-  state = {
-    routes: [],
-  };
-
-  componentDidMount = async () => {
-    try {
-      const routes = await fetchRoutes();
-      this.setState({ routes });
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
   render() {
-    const { routes } = this.state;
-    const { route } = this.props;
-
-    if (route) {
-      return route;
-    }
+    const { direction, route, stop } = this.props;
 
     return (
-      <div className="columns is-mobile is-centered">
-        <div className="column is-half">
-          <RoutesSelect routes={routes} />
-        </div>
+      <div className="app-container">
+        <RouteSelect route={route} />
+        <DirectionSelect key={route} direction={direction} route={route} />
+        <StopSelect
+          key={route + direction}
+          route={route}
+          direction={direction}
+          stop={stop}
+        />
+        <DeparturesList
+          key={route + direction + stop}
+          route={route}
+          direction={direction}
+          stop={stop}
+        />
       </div>
     );
   }
