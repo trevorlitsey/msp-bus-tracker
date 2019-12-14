@@ -3,20 +3,24 @@ import { fetchDepartures } from '../services';
 
 const FETCH_INTERVAL = 30 * 1000;
 
+const formatHours = hours => (hours > 12 ? hours - 12 : hours);
+const formatMinutes = minutes => (minutes < 10 ? `0${minutes}` : minutes);
+
 const LastFetched = ({ lastFetchedMillis, secondsTillNextFetch }) => {
   if (lastFetchedMillis) {
     const lastFetchedDateObj = new Date(lastFetchedMillis);
     const hours = lastFetchedDateObj.getHours();
     const minutes = lastFetchedDateObj.getMinutes();
 
-    const formattedLastFetched = `${
-      hours > 12 ? hours - 12 : hours
-    }:${minutes}${hours > 12 ? 'pm' : 'am'}`;
+    const formattedLastFetched = `${formatHours(hours)}:${formatMinutes(
+      minutes
+    )}`;
 
     return (
       <p>
-        Last updated at {formattedLastFetched} – Next update in 0:
-        {secondsTillNextFetch === '??' || secondsTillNextFetch > 10
+        Last updated at {formattedLastFetched}
+        {hours > 12 ? 'pm' : 'am'} – Next update in 0:
+        {secondsTillNextFetch === '??' || secondsTillNextFetch > 9
           ? secondsTillNextFetch
           : '0' + secondsTillNextFetch}
       </p>
