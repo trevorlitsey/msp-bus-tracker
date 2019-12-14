@@ -5,12 +5,14 @@ const FETCH_INTERVAL = 30 * 1000;
 
 const formatHours = hours => (hours > 12 ? hours - 12 : hours);
 const formatMinutes = minutes => (minutes < 10 ? `0${minutes}` : minutes);
+const formatSeconds = seconds => (seconds < 10 ? `0${seconds}` : seconds);
 
 const LastFetched = ({ lastFetchedMillis, secondsTillNextFetch }) => {
   if (lastFetchedMillis) {
     const lastFetchedDateObj = new Date(lastFetchedMillis);
     const hours = lastFetchedDateObj.getHours();
     const minutes = lastFetchedDateObj.getMinutes();
+    const seconds = lastFetchedDateObj.getSeconds();
 
     const formattedLastFetched = `${formatHours(hours)}:${formatMinutes(
       minutes
@@ -19,7 +21,8 @@ const LastFetched = ({ lastFetchedMillis, secondsTillNextFetch }) => {
     return (
       <p>
         Last updated at {formattedLastFetched}
-        {hours > 12 ? 'pm' : 'am'} – Next update in 0:
+        {hours > 12 ? 'pm' : 'am'} and {formatSeconds(seconds)} seconds – Next
+        automatic update in 0:
         {secondsTillNextFetch === '??' || secondsTillNextFetch > 9
           ? secondsTillNextFetch
           : '0' + secondsTillNextFetch}
@@ -96,6 +99,9 @@ class DeparturesList extends Component {
             lastFetchedMillis={lastFetchedMillis}
             secondsTillNextFetch={secondsTillNextFetch}
           />
+          <button className="button is-info" onClick={this.fetchDepartures}>
+            Update now
+          </button>
           <table className="table is-striped">
             <thead>
               <tr>
