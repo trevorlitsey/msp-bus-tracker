@@ -37,7 +37,7 @@ class DeparturesList extends Component {
   state = {
     departures: [],
     lastFetchedMillis: null,
-    secondsTillNextFetch: '??',
+    secondsTillNextFetch: FETCH_INTERVAL / 1000,
   };
 
   componentDidMount = async () => {
@@ -68,20 +68,27 @@ class DeparturesList extends Component {
     try {
       const departures = await fetchDepartures(route, direction, stop);
       this.setState({ departures, lastFetchedMillis: Date.now() });
+      this.setSecondsTillNextFetch();
     } catch (e) {
       console.error(e);
     }
   };
 
+  setSecondsTillNextFetch = () => {
+    const { lastFetchedMillis } = this.state;
+
+    const secondsTillNextFetch = lastFetchedMillis
+      ? Math.round((lastFetchedMillis + FETCH_INTERVAL - Date.now()) / 1000)
+      : '';
+
+    this.setState({
+      secondsTillNextFetch: secondsTillNextFetch < 0 ? 0 : secondsTillNextFetch,
+    });
+  };
+
   startPoll = () => {
     this.pollId = setInterval(() => {
-      const { lastFetchedMillis } = this.state;
-
-      this.setState({
-        secondsTillNextFetch: lastFetchedMillis
-          ? Math.ceil((lastFetchedMillis + FETCH_INTERVAL - Date.now()) / 1000)
-          : '',
-      });
+      this.setSecondsTillNextFetch();
     }, 1000);
   };
 
