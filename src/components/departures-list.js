@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { fetchDepartures } from "../services";
+import React, { Component } from 'react';
+import { fetchDepartures } from '../services';
 
 class DeparturesList extends Component {
   state = {
-    departures: []
+    departures: [],
   };
 
   componentDidMount = async () => {
@@ -39,7 +39,7 @@ class DeparturesList extends Component {
               <tr key={index}>
                 <td>{departure.Route}</td>
                 <td>{departure.Description}</td>
-                <td className={departure.Actual ? "" : "has-text-danger"}>
+                <td className={departure.Actual ? '' : 'has-text-danger'}>
                   {departure.DepartureText}
                 </td>
               </tr>
