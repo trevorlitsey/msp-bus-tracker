@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import { navigate } from "gatsby";
-import { fetchDirections } from "../services";
-import { getLabelValueFrom } from "../utils/utils";
-import Select from "./select";
+import React, { Component } from 'react';
+import { navigate } from 'gatsby';
+import { fetchDirections } from '../../services';
+import { getLabelValueFrom } from '../../utils/utils';
+import Select from './select';
 
 class DirectionSelect extends Component {
   state = {
-    directions: []
+    directions: [],
   };
 
   componentDidMount = async () => {
@@ -28,7 +28,7 @@ class DirectionSelect extends Component {
     const { route } = this.props;
 
     const direction = e.target.value;
-    navigate(`/${route}/${direction}`);
+    navigate(`/tracker/${route}/${direction}`);
   };
 
   render() {
@@ -39,8 +39,8 @@ class DirectionSelect extends Component {
       return (
         <Select
           label="Direction"
-          options={[{ Text: "–" }, ...directions].map(
-            getLabelValueFrom("Text", "Value")
+          options={[{ Text: '–' }, ...directions].map(
+            getLabelValueFrom('Text', 'Value')
           )}
           onChange={this.handleOnChange}
           value={direction}

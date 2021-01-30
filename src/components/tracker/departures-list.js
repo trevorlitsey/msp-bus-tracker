@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { fetchDepartures } from '../services';
+import { fetchDepartures } from '../../services';
 
 const FETCH_INTERVAL = 30 * 1000;
 
@@ -113,7 +113,7 @@ class DeparturesList extends Component {
             <thead>
               <tr>
                 <th>Route</th>
-                <th></th>
+                <th>Description</th>
                 <th>Departs</th>
               </tr>
             </thead>

@@ -1,16 +1,16 @@
-import React, { Component } from "react";
-import RouteSelect from "./route-select";
-import DirectionSelect from "./direction-select";
-import StopSelect from "./stop-select";
-import DeparturesList from "./departures-list";
-import "./style.scss";
+import React, { Component } from 'react';
+import RouteSelect from './route-select';
+import DirectionSelect from './direction-select';
+import StopSelect from './stop-select';
+import DeparturesList from './departures-list';
+import Layout from '../layout';
 
 class App extends Component {
   render() {
     const { direction, route, stop } = this.props;
 
     return (
-      <div className="app-container">
+      <Layout>
         <RouteSelect route={route} />
         <DirectionSelect key={route} direction={direction} route={route} />
         <StopSelect
@@ -25,7 +25,7 @@ class App extends Component {
           direction={direction}
           stop={stop}
         />
-      </div>
+      </Layout>
     );
   }
 }

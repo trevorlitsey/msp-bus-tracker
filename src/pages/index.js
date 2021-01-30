@@ -1,14 +1,4 @@
 import React from 'react';
-import { Router } from '@reach/router';
-import App from '../components/app';
-
-const IndexPage = () => (
-  <Router>
-    <App path="/" />
-    <App path="/:route" />
-    <App path="/:route/:direction" />
-    <App path="/:route/:direction/:stop" />
-  </Router>
-);
+import IndexPage from '../components/index';
 
 export default IndexPage;

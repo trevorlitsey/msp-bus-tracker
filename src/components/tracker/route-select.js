@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import { navigate } from "gatsby";
-import { fetchRoutes } from "../services";
-import { getLabelValueFrom } from "../utils/utils";
-import Select from "./select";
+import React, { Component } from 'react';
+import { navigate } from 'gatsby';
+import { fetchRoutes } from '../../services';
+import { getLabelValueFrom } from '../../utils/utils';
+import Select from './select';
 
 class RoutesSelect extends Component {
   state = {
-    routes: []
+    routes: [],
   };
 
   componentDidMount = async () => {
@@ -20,7 +20,7 @@ class RoutesSelect extends Component {
 
   handleOnChange = e => {
     const route = e.target.value;
-    navigate(`/${route}`);
+    navigate(`/tracker/${route}`);
   };
 
   render() {
@@ -31,8 +31,8 @@ class RoutesSelect extends Component {
       return (
         <Select
           label="Route"
-          options={[{ Description: "–" }, ...routes].map(
-            getLabelValueFrom("Description", "Route")
+          options={[{ Description: '–' }, ...routes].map(
+            getLabelValueFrom('Description', 'Route')
           )}
           onChange={this.handleOnChange}
           value={route}

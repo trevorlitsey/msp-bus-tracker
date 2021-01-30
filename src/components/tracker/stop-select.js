@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import { navigate } from "gatsby";
-import { fetchStops } from "../services";
-import { getLabelValueFrom } from "../utils/utils";
-import Select from "./select";
+import React, { Component } from 'react';
+import { navigate } from 'gatsby';
+import { fetchStops } from '../../services';
+import { getLabelValueFrom } from '../../utils/utils';
+import Select from './select';
 
 class StopSelect extends Component {
   state = {
-    stops: []
+    stops: [],
   };
 
   componentDidMount = async () => {
@@ -28,7 +28,7 @@ class StopSelect extends Component {
     const { direction, route } = this.props;
 
     const stop = e.target.value;
-    navigate(`/${route}/${direction}/${stop}`);
+    navigate(`/tracker/${route}/${direction}/${stop}`);
   };
 
   render() {
@@ -39,8 +39,8 @@ class StopSelect extends Component {
       return (
         <Select
           label="Stop"
-          options={[{ Text: "–" }, ...stops].map(
-            getLabelValueFrom("Text", "Value")
+          options={[{ Text: '–' }, ...stops].map(
+            getLabelValueFrom('Text', 'Value')
           )}
           onChange={this.handleOnChange}
           value={stop}
