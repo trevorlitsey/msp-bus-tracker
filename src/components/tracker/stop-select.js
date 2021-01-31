@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { navigate } from 'gatsby';
 import { fetchStops } from '../../services';
-import { getLabelValueFrom } from '../../utils/utils';
 import Select from './select';
 
 class StopSelect extends Component {
@@ -39,9 +38,7 @@ class StopSelect extends Component {
       return (
         <Select
           label="Stop"
-          options={[{ Text: '–' }, ...stops].map(
-            getLabelValueFrom('Text', 'Value')
-          )}
+          options={stops}
           onChange={this.handleOnChange}
           value={stop}
         />

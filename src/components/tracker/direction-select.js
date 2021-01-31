@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { navigate } from 'gatsby';
 import { fetchDirections } from '../../services';
-import { getLabelValueFrom } from '../../utils/utils';
 import Select from './select';
 
 class DirectionSelect extends Component {
@@ -39,9 +38,7 @@ class DirectionSelect extends Component {
       return (
         <Select
           label="Direction"
-          options={[{ Text: '–' }, ...directions].map(
-            getLabelValueFrom('Text', 'Value')
-          )}
+          options={directions}
           onChange={this.handleOnChange}
           value={direction}
         />

@@ -1,29 +1,38 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import { getIsLoggedIn } from '../utils';
 
 const Nav = () => (
-  <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <div class="navbar-start">
-        <Link class="navbar-item" to="/tracker">
+  <nav className="navbar" role="navigation" aria-label="main navigation">
+    <div className="navbar-brand">
+      <div className="navbar-start">
+        <Link className="navbar-item" to="/tracker">
           Home
         </Link>
-        <Link class="navbar-item" to="/tracker">
+        <Link className="navbar-item" to="/tracker">
           Tracker
         </Link>
       </div>
     </div>
 
-    <div class="navbar-menu">
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="buttons">
-            <Link class="button is-primary" to="/signup">
-              <strong>Sign up</strong>
-            </Link>
-            <Link class="button is-light" to="/login">
-              Log in
-            </Link>
+    <div className="navbar-menu">
+      <div className="navbar-end">
+        <div className="navbar-item">
+          <div className="buttons">
+            {getIsLoggedIn() ? (
+              <Link className="button is-primary" to="/account">
+                Account
+              </Link>
+            ) : (
+              <>
+                <Link className="button is-primary" to="/signup">
+                  <strong>Sign up</strong>
+                </Link>
+                <Link className="button is-light" to="/login">
+                  Log in
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </div>

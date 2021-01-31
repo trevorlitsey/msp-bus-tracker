@@ -14,13 +14,13 @@ class App extends Component {
         <RouteSelect route={route} />
         <DirectionSelect key={route} direction={direction} route={route} />
         <StopSelect
-          key={route + direction}
+          key={route && direction && route + direction}
           route={route}
           direction={direction}
           stop={stop}
         />
         <DeparturesList
-          key={route + direction + stop}
+          key={route && direction && stop && route + direction + stop}
           route={route}
           direction={direction}
           stop={stop}

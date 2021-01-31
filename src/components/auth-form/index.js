@@ -3,17 +3,23 @@ import PropTypes from 'prop-types';
 import Form from '../forms/form';
 import Input from '../forms/input';
 import Layout from '../layout';
-import { setAuthToken } from '../../utils/auth';
+import { removeAuthToken, setAuthToken } from '../../utils/auth';
 
-const AuthForm = ({ onSubmit, title }) => {
+const AuthForm = ({ defaultErrorMessage, onSubmit, title }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
 
   const handleSubmit = () => {
     try {
       const { jwt } = onSubmit(email, password);
+      debugger;
       setAuthToken(jwt);
-    } catch (e) {}
+    } catch (e) {
+      debugger;
+      removeAuthToken();
+      setError(e.responseJSON.error || defaultErrorMessage);
+    }
   };
 
   return (
@@ -23,6 +29,7 @@ const AuthForm = ({ onSubmit, title }) => {
         <div class="column">
           <h1 className="is-size-2 mt-6">{title}</h1>
           <div class="box mt-2">
+            {error && <div class="notification is-danger">{error}</div>}
             <Form onSubmit={handleSubmit}>
               <Input
                 id="email"
@@ -51,6 +58,7 @@ const AuthForm = ({ onSubmit, title }) => {
 };
 
 AuthForm.propTypes = {
+  defaultErrorMessage: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
 };

@@ -43,12 +43,10 @@ class DeparturesList extends Component {
   componentDidMount = async () => {
     const { route, direction, stop } = this.props;
 
-    if (!route || !direction || !stop) {
-      return;
+    if (route && direction && stop) {
+      this.fetchDepartures();
+      this.startPoll();
     }
-
-    this.fetchDepartures();
-    this.startPoll();
   };
 
   componentDidUpdate = () => {
@@ -120,10 +118,10 @@ class DeparturesList extends Component {
             <tbody>
               {departures.map((departure, index) => (
                 <tr key={index}>
-                  <td>{departure.Route}</td>
-                  <td>{departure.Description}</td>
-                  <td className={departure.Actual ? '' : 'has-text-danger'}>
-                    {departure.DepartureText}
+                  <td>{departure.route}</td>
+                  <td>{departure.description}</td>
+                  <td className={departure.actual ? '' : 'has-text-danger'}>
+                    {departure.departureText}
                   </td>
                 </tr>
               ))}

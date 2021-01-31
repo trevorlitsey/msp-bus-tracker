@@ -6,7 +6,10 @@ import { logger } from './logger';
 export const fetchJSON = (requestURL, method = 'GET', body) => {
   const options = {
     method,
-    headers: {},
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+    },
   };
 
   const authToken = getAuthToken();
@@ -21,7 +24,7 @@ export const fetchJSON = (requestURL, method = 'GET', body) => {
 
   return fetch(API + requestURL, options).then(async res => {
     let json;
-
+    debugger;
     try {
       json = await res.json();
     } catch (e) {
@@ -40,8 +43,8 @@ export const fetchJSON = (requestURL, method = 'GET', body) => {
   });
 };
 
-fetchJSON.get = body => fetchJSON('GET', body);
-fetchJSON.post = body => fetchJSON('POST', body);
-fetchJSON.put = body => fetchJSON('PUT', body);
-fetchJSON.patch = body => fetchJSON('PATCH', body);
-fetchJSON.delete = body => fetchJSON('DELETE', body);
+fetchJSON.get = (url, body) => fetchJSON(url, 'GET', body);
+fetchJSON.post = (url, body) => fetchJSON(url, 'POST', body);
+fetchJSON.put = (url, body) => fetchJSON(url, 'PUT', body);
+fetchJSON.patch = (url, body) => fetchJSON(url, 'PATCH', body);
+fetchJSON.delete = (url, body) => fetchJSON(url, 'DELETE', body);

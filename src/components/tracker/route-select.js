@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { navigate } from 'gatsby';
 import { fetchRoutes } from '../../services';
-import { getLabelValueFrom } from '../../utils/utils';
 import Select from './select';
 
 class RoutesSelect extends Component {
@@ -31,9 +30,7 @@ class RoutesSelect extends Component {
       return (
         <Select
           label="Route"
-          options={[{ Description: '–' }, ...routes].map(
-            getLabelValueFrom('Description', 'Route')
-          )}
+          options={routes}
           onChange={this.handleOnChange}
           value={route}
         />
