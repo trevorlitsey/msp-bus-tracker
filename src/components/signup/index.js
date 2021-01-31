@@ -1,6 +1,6 @@
 import React from 'react';
-import Layout from '../layout';
+import AuthForm from '../auth-form';
 
-const SignupPage = () => <Layout>signup</Layout>;
+const SignupPage = () => <AuthForm title="Sign up" />;
 
 export default SignupPage;
