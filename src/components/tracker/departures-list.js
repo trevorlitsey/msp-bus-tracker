@@ -50,8 +50,14 @@ class DeparturesList extends Component {
   };
 
   componentDidUpdate = () => {
+    const { route, direction, stop } = this.props;
     const { lastFetchedMillis } = this.state;
-    if (lastFetchedMillis <= Date.now() - FETCH_INTERVAL) {
+    if (
+      lastFetchedMillis <= Date.now() - FETCH_INTERVAL &&
+      route &&
+      direction &&
+      stop
+    ) {
       this.fetchDepartures();
     }
   };

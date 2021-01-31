@@ -24,7 +24,7 @@ export const fetchJSON = (requestURL, method = 'GET', body) => {
 
   return fetch(API + requestURL, options).then(async res => {
     let json;
-    debugger;
+
     try {
       json = await res.json();
     } catch (e) {

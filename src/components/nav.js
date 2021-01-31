@@ -20,8 +20,8 @@ const Nav = () => (
         <div className="navbar-item">
           <div className="buttons">
             {getIsLoggedIn() ? (
-              <Link className="button is-primary" to="/account">
-                Account
+              <Link className="button is-danger" to="/logout">
+                Logout
               </Link>
             ) : (
               <>

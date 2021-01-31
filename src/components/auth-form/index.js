@@ -4,32 +4,35 @@ import Form from '../forms/form';
 import Input from '../forms/input';
 import Layout from '../layout';
 import { removeAuthToken, setAuthToken } from '../../utils/auth';
+import { navigate } from 'gatsby';
 
 const AuthForm = ({ defaultErrorMessage, onSubmit, title }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     try {
-      const { jwt } = onSubmit(email, password);
-      debugger;
+      const { jwt } = await onSubmit(email, password);
       setAuthToken(jwt);
+      navigate('/tracker');
     } catch (e) {
-      debugger;
       removeAuthToken();
-      setError(e.responseJSON.error || defaultErrorMessage);
+
+      const errorMessage = setError(
+        (e.responseJSON && e.responseJSON.message) || defaultErrorMessage
+      );
     }
   };
 
   return (
     <Layout>
-      <div class="columns ">
-        <div class="column"></div>
-        <div class="column">
+      <div className="columns">
+        <div className="column"></div>
+        <div className="column">
           <h1 className="is-size-2 mt-6">{title}</h1>
-          <div class="box mt-2">
-            {error && <div class="notification is-danger">{error}</div>}
+          <div className="box mt-2">
+            {error && <div className="notification is-danger">{error}</div>}
             <Form onSubmit={handleSubmit}>
               <Input
                 id="email"
@@ -45,13 +48,13 @@ const AuthForm = ({ defaultErrorMessage, onSubmit, title }) => {
                 placeholder="e.g. password123"
                 type="password"
               />
-              <div class="control">
-                <button class="button is-link">Submit</button>
+              <div className="control">
+                <button className="button is-link">Submit</button>
               </div>
             </Form>
           </div>
         </div>
-        <div class="column"></div>
+        <div className="column"></div>
       </div>
     </Layout>
   );
