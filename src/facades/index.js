@@ -1,7 +1,11 @@
-export const localStorage =
-  typeof window === 'undefined'
-    ? {
-        getItem: () => {},
-        setItem: () => {},
-      }
-    : localStorage;
+const isBrowser = typeof window !== 'undefined';
+
+export const localStorage = isBrowser
+  ? window.localStorage
+  : {
+      getItem: () => {},
+      removeItem: () => {},
+      setItem: () => {},
+    };
+
+export const location = isBrowser ? window.location : {};
