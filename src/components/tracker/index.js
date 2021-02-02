@@ -11,6 +11,7 @@ class App extends Component {
 
     return (
       <Layout>
+        <h1 className="title">Tracker</h1>
         <RouteSelect route={route} />
         <DirectionSelect key={route} direction={direction} route={route} />
         <StopSelect

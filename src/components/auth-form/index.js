@@ -19,8 +19,7 @@ const AuthForm = ({ defaultErrorMessage, onSubmit, title }) => {
       setAuthToken(jwt);
       navigate('/tracker');
     } catch (e) {
-      const errorMessage =
-        (e.responseJSON && e.responseJSON.message) || defaultErrorMessage;
+      const errorMessage = e.message || defaultErrorMessage;
       setError(errorMessage);
     } finally {
       setIsSubmitting(false);
@@ -28,10 +27,10 @@ const AuthForm = ({ defaultErrorMessage, onSubmit, title }) => {
   };
 
   return (
-    <div className="columns">
+    <div className="columns mt-6">
       <div className="column"></div>
       <div className="column">
-        <h1 className="title mt-6">{title}</h1>
+        <h1 className="title">{title}</h1>
         <div className="box mt-2">
           {error && <div className="notification is-danger">{error}</div>}
           <Form onSubmit={handleSubmit}>

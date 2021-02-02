@@ -1,5 +1,6 @@
 import { fetchJSON } from '../utils/fetch';
 
+// metro transit
 export const fetchRoutes = () => {
   return fetchJSON.get('/metro-transit/routes');
 };
@@ -18,10 +19,16 @@ export const fetchDepartures = (route, direction, stop) => {
   );
 };
 
+// auth
 export const createUser = (email, password) => {
   return fetchJSON.post('/auth/create-user', { email, password });
 };
 
 export const authenticateUser = (email, password) => {
   return fetchJSON.post('/auth/authenticate', { email, password });
+};
+
+// groups
+export const fetchGroups = () => {
+  return fetchJSON.get('/groups');
 };

@@ -6,5 +6,6 @@ export class FetchError extends Error {
     }
     this.response = response;
     this.responseJSON = json;
+    this.message = json ? json.message : '';
   }
 }
