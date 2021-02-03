@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import Nav from './nav';
-import './style.css';
+import Nav from '../nav';
+import '../../style.css';
 
 const Layout = ({ children, className }) => (
   <Fragment>

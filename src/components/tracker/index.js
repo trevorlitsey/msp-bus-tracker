@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import Layout from '../shared/layout';
 import RouteSelect from './route-select';
 import DirectionSelect from './direction-select';
 import StopSelect from './stop-select';
 import DeparturesList from './departures-list';
-import Layout from '../layout';
 
 class App extends Component {
   render() {

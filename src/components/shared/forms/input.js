@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Input = ({ id, label, onChange, placeholder, type }) => {
+const Input = ({ helpText, id, label, onChange, placeholder, type }) => {
   const handleChange = e => {
     onChange(e.target.value);
   };
@@ -20,11 +20,13 @@ const Input = ({ id, label, onChange, placeholder, type }) => {
           type={type}
         />
       </div>
+      {helpText && <p class="help">{helpText}</p>}
     </div>
   );
 };
 
 Input.propTypes = {
+  helpText: PropTypes.string,
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Form from '../forms/form';
 import Input from '../forms/input';
-import { setAuthToken } from '../../utils/auth';
+import { setAuthToken } from '../../../utils/auth';
 import { navigate } from 'gatsby';
 
 const AuthForm = ({ defaultErrorMessage, onSubmit, title }) => {

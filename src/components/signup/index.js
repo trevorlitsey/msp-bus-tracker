@@ -1,7 +1,7 @@
 import React from 'react';
 import { createUser } from '../../services';
-import AuthForm from '../auth-form';
-import Layout from '../layout';
+import AuthForm from '../shared/auth-form';
+import Layout from '../shared/layout';
 
 const SignupPage = () => (
   <Layout>

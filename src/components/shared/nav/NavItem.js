@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import classnames from 'classnames';
-import { location } from '../../facades';
+import { location } from '../../../facades';
 
 const NavItem = ({ children, className, to }) => {
   return (

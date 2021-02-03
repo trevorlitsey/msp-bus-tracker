@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { navigate } from 'gatsby';
-import { getIsLoggedIn, removeAuthToken } from '../../utils';
+import { getIsLoggedIn, removeAuthToken } from '../../../utils';
 import NavItem from './NavItem';
 
 const Nav = () => {
