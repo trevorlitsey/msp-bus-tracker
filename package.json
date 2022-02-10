@@ -8,7 +8,7 @@
     "gatsby": "^2.16.5",
     "gatsby-plugin-create-client-paths": "^2.1.17",
     "gatsby-plugin-sass": "^2.1.20",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2"
   },
